@@ -16,7 +16,7 @@ namespace Pluzze
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Pluzze());
+            Application.Run(new Puzzle());
         }
     }
 }

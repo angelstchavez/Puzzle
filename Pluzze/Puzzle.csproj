@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pluzze.cs">
+    <Compile Include="Puzzle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pluzze.Designer.cs">
-      <DependentUpon>Pluzze.cs</DependentUpon>
+    <Compile Include="Puzzle.Designer.cs">
+      <DependentUpon>Puzzle.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Pluzze.resx">
-      <DependentUpon>Pluzze.cs</DependentUpon>
+    <EmbeddedResource Include="Puzzle.resx">
+      <DependentUpon>Puzzle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

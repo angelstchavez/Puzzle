@@ -6,14 +6,14 @@ using System.Windows.Forms;
 
 namespace Pluzze
 {
-    public partial class Pluzze : Form
+    public partial class Puzzle : Form
     {
         //Arreglo principal
         public string[] a = new string[16];
 
         Stopwatch sw = new Stopwatch();
 
-        public Pluzze()
+        public Puzzle()
         {
             a = GenerarNumerosAleatorios();
             InitializeComponent();

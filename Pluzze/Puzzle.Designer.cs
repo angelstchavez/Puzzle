@@ -1,6 +1,6 @@
 ﻿namespace Pluzze
 {
-    partial class Pluzze
+    partial class Puzzle
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pluzze));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Puzzle));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.Btn_Minimizar = new System.Windows.Forms.Button();
