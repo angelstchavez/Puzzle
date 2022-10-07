@@ -12,10 +12,11 @@ namespace Pluzze
 {
     public partial class Pluzze : Form
     {
+        public string[] a = new string[16];
+
         public Pluzze()
         {
-            string[] numeros = new string[16];
-            numeros = GenerarNumerosAleatorios();
+            a = GenerarNumerosAleatorios();
             InitializeComponent();
         }
 
@@ -47,6 +48,16 @@ namespace Pluzze
         #region BOTONES PRINCIPALES
         private void button1_Click(object sender, EventArgs e)
         {
+            //Cambio de color
+            if(button1.Text == "1")
+            {
+                button1.ForeColor = System.Drawing.Color.Orange;
+            }
+            else
+            {
+                button1.ForeColor = Color.White;
+            }
+
             if (button2.Text == "")
             {
                 button2.Text = button1.Text;
@@ -61,6 +72,7 @@ namespace Pluzze
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             if (button1.Text == "")
             {
                 button1.Text = button2.Text;
@@ -80,6 +92,16 @@ namespace Pluzze
 
         private void button3_Click(object sender, EventArgs e)
         {
+
+            //Cambio de color
+            if (button3.Text == "3")
+            {
+                button3.ForeColor = Color.Orange;
+            }
+            else
+            {
+                button3.ForeColor = Color.White;
+            }
 
             if (button2.Text == "")
             {
@@ -442,7 +464,33 @@ namespace Pluzze
             }
             return num;
         }
+
+        private void CargarPuzzle(object sender, EventArgs e)
+        {
+            this.button1.Text = a[0];
+            this.button2.Text = a[1];
+            this.button3.Text = a[2];
+            this.button4.Text = a[3];
+            this.button5.Text = a[4];
+            this.button6.Text = a[5];
+            this.button7.Text = a[6];
+            this.button8.Text = a[7];
+            this.button9.Text = a[8];
+            this.button10.Text = a[9];
+            this.button11.Text = a[10];
+            this.button12.Text = a[11];
+            this.button13.Text = a[12];
+            this.button14.Text = a[13];
+            this.button15.Text = a[14];
+            this.button16.Text = a[15];
+        }
+
         #endregion
 
+        private void button17_Click(object sender, EventArgs e)
+        {
+            string[] a = new string[16];
+            a = GenerarNumerosAleatorios();
+        }
     }
 }
