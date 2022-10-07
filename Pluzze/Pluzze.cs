@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Pluzze
 {
     public partial class Pluzze : Form
     {
+        //Arreglo principal
         public string[] a = new string[16];
+
+        Stopwatch sw = new Stopwatch();
 
         public Pluzze()
         {
@@ -48,16 +47,6 @@ namespace Pluzze
         #region BOTONES PRINCIPALES
         private void button1_Click(object sender, EventArgs e)
         {
-            //Cambio de color
-            if(button1.Text == "1")
-            {
-                button1.ForeColor = System.Drawing.Color.Orange;
-            }
-            else
-            {
-                button1.ForeColor = Color.White;
-            }
-
             if (button2.Text == "")
             {
                 button2.Text = button1.Text;
@@ -92,17 +81,6 @@ namespace Pluzze
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            //Cambio de color
-            if (button3.Text == "3")
-            {
-                button3.ForeColor = Color.Orange;
-            }
-            else
-            {
-                button3.ForeColor = Color.White;
-            }
-
             if (button2.Text == "")
             {
                 button2.Text = button3.Text;
@@ -427,6 +405,7 @@ namespace Pluzze
 
             }
         }
+
         #endregion
 
         #region METODOS PRIVADOS
@@ -467,6 +446,68 @@ namespace Pluzze
 
         private void CargarPuzzle(object sender, EventArgs e)
         {
+            Restaurar.Enabled = false;
+
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button7.Enabled = false;
+            button8.Enabled = false;
+            button9.Enabled = false;
+            button10.Enabled = false;
+            button11.Enabled = false;
+            button12.Enabled = false;
+            button13.Enabled = false;
+            button14.Enabled = false;
+            button15.Enabled = false;
+            button16.Enabled = false;
+
+            this.button1.Text = "";
+            this.button2.Text = "";
+            this.button3.Text = "";
+            this.button4.Text = "";
+            this.button5.Text = "";
+            this.button6.Text = "";
+            this.button7.Text = "";
+            this.button8.Text = "";
+            this.button9.Text = "";
+            this.button10.Text = "";
+            this.button11.Text = "";
+            this.button12.Text = "";
+            this.button13.Text = "";
+            this.button14.Text = "";
+            this.button15.Text = "";
+            this.button16.Text = "";
+        }
+
+        private void Iniciar_Click(object sender, EventArgs e)
+        {
+            Restaurar.Enabled = true;
+            Iniciar.Enabled = false;
+
+            string[] a = new string[16];
+            a = GenerarNumerosAleatorios();
+
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
+            button5.Enabled = true;
+            button6.Enabled = true;
+            button7.Enabled = true;
+            button8.Enabled = true;
+            button9.Enabled = true;
+            button10.Enabled = true;
+            button11.Enabled = true;
+            button12.Enabled = true;
+            button13.Enabled = true;
+            button14.Enabled = true;
+            button15.Enabled = true;
+            button16.Enabled = true;
+
             this.button1.Text = a[0];
             this.button2.Text = a[1];
             this.button3.Text = a[2];
@@ -483,14 +524,60 @@ namespace Pluzze
             this.button14.Text = a[13];
             this.button15.Text = a[14];
             this.button16.Text = a[15];
+
+            sw.Start();
+            timer1.Enabled = true;
         }
-
-        #endregion
-
-        private void button17_Click(object sender, EventArgs e)
+        
+        private void Restablecer_Click(object sender, EventArgs e)
         {
-            string[] a = new string[16];
-            a = GenerarNumerosAleatorios();
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button7.Enabled = false;
+            button8.Enabled = false;
+            button9.Enabled = false;
+            button10.Enabled = false;
+            button11.Enabled = false;
+            button12.Enabled = false;
+            button13.Enabled = false;
+            button14.Enabled = false;
+            button15.Enabled = false;
+            button16.Enabled = false;
+
+            this.button1.Text = "";
+            this.button2.Text = "";
+            this.button3.Text = "";
+            this.button4.Text = "";
+            this.button5.Text = "";
+            this.button6.Text = "";
+            this.button7.Text = "";
+            this.button8.Text = "";
+            this.button9.Text = "";
+            this.button10.Text = "";
+            this.button11.Text = "";
+            this.button12.Text = "";
+            this.button13.Text = "";
+            this.button14.Text = "";
+            this.button15.Text = "";
+            this.button16.Text = "";
+
+            sw.Restart();
+            temporizador.Text = "00:00";
+            Restaurar.Enabled = false;
+            Iniciar.Enabled = true;
         }
+
+        private void Temporizador(object sender, EventArgs e)
+        {
+            TimeSpan ts = new TimeSpan(0, 0, 0, 0, (int)sw.ElapsedMilliseconds);
+            string min = ts.Minutes.ToString().Length < 2 ? "0" + ts.Minutes.ToString() : ts.Minutes.ToString();
+            string sec = ts.Seconds.ToString().Length < 2 ? "0" + ts.Seconds.ToString() : ts.Seconds.ToString();
+            temporizador.Text = $"{min}:{sec}";
+        }
+        #endregion
     }
 }
