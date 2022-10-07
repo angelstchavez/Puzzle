@@ -495,7 +495,7 @@
             this.temporizador.Text = "00:00";
             this.temporizador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Pluzze
+            // Puzzle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -508,7 +508,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Pluzze";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Puzzle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pluzze";
             this.Load += new System.EventHandler(this.CargarPuzzle);
