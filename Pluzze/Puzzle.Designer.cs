@@ -37,6 +37,12 @@
             this.Btn_Minimizar = new System.Windows.Forms.Button();
             this.Btn_Cerrar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.t = new System.Windows.Forms.Label();
+            this.temporizador = new System.Windows.Forms.Label();
+            this.restart = new System.Windows.Forms.PictureBox();
+            this.play = new System.Windows.Forms.PictureBox();
+            this.fondo = new System.Windows.Forms.PictureBox();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
@@ -53,13 +59,15 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.Restaurar = new System.Windows.Forms.Button();
-            this.Iniciar = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.t = new System.Windows.Forms.Label();
-            this.temporizador = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.restart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.play)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fondo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -124,6 +132,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(144)))), ((int)(((byte)(88)))));
+            this.panel2.Controls.Add(this.fondo);
             this.panel2.Controls.Add(this.button16);
             this.panel2.Controls.Add(this.button15);
             this.panel2.Controls.Add(this.button14);
@@ -144,6 +153,73 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(426, 426);
             this.panel2.TabIndex = 1;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.Temporizador);
+            // 
+            // t
+            // 
+            this.t.AutoSize = true;
+            this.t.BackColor = System.Drawing.Color.Transparent;
+            this.t.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.t.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(70)))), ((int)(((byte)(38)))));
+            this.t.Location = new System.Drawing.Point(156, 462);
+            this.t.Name = "t";
+            this.t.Size = new System.Drawing.Size(131, 22);
+            this.t.TabIndex = 5;
+            this.t.Text = "Temporizador:";
+            // 
+            // temporizador
+            // 
+            this.temporizador.AllowDrop = true;
+            this.temporizador.AutoSize = true;
+            this.temporizador.BackColor = System.Drawing.Color.Transparent;
+            this.temporizador.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.temporizador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(70)))), ((int)(((byte)(38)))));
+            this.temporizador.Location = new System.Drawing.Point(177, 484);
+            this.temporizador.Name = "temporizador";
+            this.temporizador.Size = new System.Drawing.Size(116, 44);
+            this.temporizador.TabIndex = 6;
+            this.temporizador.Text = "00:00";
+            this.temporizador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // restart
+            // 
+            this.restart.BackColor = System.Drawing.Color.Transparent;
+            this.restart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.restart.Image = global::Pluzze.Properties.Resources.restart;
+            this.restart.Location = new System.Drawing.Point(354, 463);
+            this.restart.Name = "restart";
+            this.restart.Size = new System.Drawing.Size(79, 82);
+            this.restart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.restart.TabIndex = 8;
+            this.restart.TabStop = false;
+            this.restart.Click += new System.EventHandler(this.BRestart);
+            // 
+            // play
+            // 
+            this.play.BackColor = System.Drawing.Color.Transparent;
+            this.play.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.play.Image = global::Pluzze.Properties.Resources.play;
+            this.play.Location = new System.Drawing.Point(7, 463);
+            this.play.Name = "play";
+            this.play.Size = new System.Drawing.Size(79, 82);
+            this.play.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.play.TabIndex = 7;
+            this.play.TabStop = false;
+            this.play.Click += new System.EventHandler(this.BPlay);
+            // 
+            // fondo
+            // 
+            this.fondo.BackColor = System.Drawing.Color.Transparent;
+            this.fondo.Image = global::Pluzze.Properties.Resources.bg;
+            this.fondo.Location = new System.Drawing.Point(-7, -11);
+            this.fondo.Name = "fondo";
+            this.fondo.Size = new System.Drawing.Size(440, 437);
+            this.fondo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.fondo.TabIndex = 16;
+            this.fondo.TabStop = false;
             // 
             // button16
             // 
@@ -433,80 +509,43 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Restaurar
+            // pictureBox1
             // 
-            this.Restaurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(70)))), ((int)(((byte)(38)))));
-            this.Restaurar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Restaurar.FlatAppearance.BorderSize = 0;
-            this.Restaurar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(52)))), ((int)(((byte)(28)))));
-            this.Restaurar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(52)))), ((int)(((byte)(28)))));
-            this.Restaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Restaurar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Restaurar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(193)))), ((int)(((byte)(156)))));
-            this.Restaurar.Location = new System.Drawing.Point(329, 465);
-            this.Restaurar.Name = "Restaurar";
-            this.Restaurar.Size = new System.Drawing.Size(104, 38);
-            this.Restaurar.TabIndex = 2;
-            this.Restaurar.Text = "Reiniciar";
-            this.Restaurar.UseVisualStyleBackColor = false;
-            this.Restaurar.Click += new System.EventHandler(this.Restablecer_Click);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Pluzze.Properties.Resources.clock;
+            this.pictureBox1.Location = new System.Drawing.Point(148, 471);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 66);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
             // 
-            // Iniciar
+            // pictureBox2
             // 
-            this.Iniciar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(70)))), ((int)(((byte)(38)))));
-            this.Iniciar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Iniciar.FlatAppearance.BorderSize = 0;
-            this.Iniciar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(52)))), ((int)(((byte)(28)))));
-            this.Iniciar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(52)))), ((int)(((byte)(28)))));
-            this.Iniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Iniciar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Iniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(193)))), ((int)(((byte)(156)))));
-            this.Iniciar.Location = new System.Drawing.Point(7, 465);
-            this.Iniciar.Name = "Iniciar";
-            this.Iniciar.Size = new System.Drawing.Size(105, 38);
-            this.Iniciar.TabIndex = 3;
-            this.Iniciar.Text = "Iniciar";
-            this.Iniciar.UseVisualStyleBackColor = false;
-            this.Iniciar.Click += new System.EventHandler(this.Iniciar_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.Temporizador);
-            // 
-            // t
-            // 
-            this.t.AutoSize = true;
-            this.t.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.t.Location = new System.Drawing.Point(180, 465);
-            this.t.Name = "t";
-            this.t.Size = new System.Drawing.Size(88, 16);
-            this.t.TabIndex = 5;
-            this.t.Text = "Temporizador:";
-            // 
-            // temporizador
-            // 
-            this.temporizador.AllowDrop = true;
-            this.temporizador.AutoSize = true;
-            this.temporizador.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.temporizador.Location = new System.Drawing.Point(194, 484);
-            this.temporizador.Name = "temporizador";
-            this.temporizador.Size = new System.Drawing.Size(51, 19);
-            this.temporizador.TabIndex = 6;
-            this.temporizador.Text = "00:00";
-            this.temporizador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBox2.Image = global::Pluzze.Properties.Resources.down;
+            this.pictureBox2.Location = new System.Drawing.Point(92, 524);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(256, 46);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
             // 
             // Puzzle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(157)))), ((int)(((byte)(105)))));
-            this.ClientSize = new System.Drawing.Size(440, 511);
-            this.Controls.Add(this.temporizador);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(440, 549);
+            this.Controls.Add(this.play);
+            this.Controls.Add(this.restart);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.t);
-            this.Controls.Add(this.Iniciar);
-            this.Controls.Add(this.Restaurar);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.temporizador);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Puzzle";
@@ -516,6 +555,11 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.restart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.play)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fondo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -544,10 +588,13 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Restaurar;
-        private System.Windows.Forms.Button Iniciar;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label t;
         private System.Windows.Forms.Label temporizador;
+        private System.Windows.Forms.PictureBox play;
+        private System.Windows.Forms.PictureBox restart;
+        private System.Windows.Forms.PictureBox fondo;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

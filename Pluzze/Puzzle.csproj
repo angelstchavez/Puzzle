@@ -88,6 +88,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icono.ico" />
+    <None Include="img\down.png" />
+    <None Include="img\clock.png" />
+    <None Include="img\logo.png" />
+    <None Include="img\bg.png" />
+    <None Include="img\restart.png" />
+    <None Include="img\play.png" />
+    <None Include="img\unnamed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

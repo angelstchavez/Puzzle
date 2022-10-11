@@ -446,7 +446,7 @@ namespace Pluzze
 
         private void CargarPuzzle(object sender, EventArgs e)
         {
-            Restaurar.Enabled = false;
+            restart.Enabled = false;
 
             button1.Enabled = false;
             button2.Enabled = false;
@@ -483,10 +483,11 @@ namespace Pluzze
             this.button16.Text = "";
         }
 
-        private void Iniciar_Click(object sender, EventArgs e)
+        private void BPlay(object sender, EventArgs e)
         {
-            Restaurar.Enabled = true;
-            Iniciar.Enabled = false;
+            fondo.Visible = false;
+            restart.Enabled = true;
+            play.Enabled = false;
 
             string[] a = new string[16];
             a = GenerarNumerosAleatorios();
@@ -528,9 +529,11 @@ namespace Pluzze
             sw.Start();
             timer1.Enabled = true;
         }
-        
-        private void Restablecer_Click(object sender, EventArgs e)
+
+        private void BRestart(object sender, EventArgs e)
         {
+            fondo.Visible = true;
+
             button1.Enabled = false;
             button2.Enabled = false;
             button3.Enabled = false;
@@ -564,11 +567,11 @@ namespace Pluzze
             this.button14.Text = "";
             this.button15.Text = "";
             this.button16.Text = "";
-
-            sw.Restart();
+            sw.Reset();
+            sw.Stop();
             temporizador.Text = "00:00";
-            Restaurar.Enabled = false;
-            Iniciar.Enabled = true;
+            restart.Enabled = false;
+            play.Enabled = true;
         }
 
         private void Temporizador(object sender, EventArgs e)
@@ -578,6 +581,7 @@ namespace Pluzze
             string sec = ts.Seconds.ToString().Length < 2 ? "0" + ts.Seconds.ToString() : ts.Seconds.ToString();
             temporizador.Text = $"{min}:{sec}";
         }
+
         #endregion
     }
 }
